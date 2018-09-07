@@ -25,7 +25,7 @@ yarn add fallback-version
 ```javascript
 const { Version } = require('fallback-version');
 const V = new Version();
-V.loadVersionMap(new Set(['Chrome/10', 'Chrome/50', 'Chrome/60', 'Chrome/65']));
+V.loadVersionSet(new Set(['Chrome/10', 'Chrome/50', 'Chrome/60', 'Chrome/65']));
 const test = 'Chrome/62';
 const result = V.match(test); // result [ 'Chrome', 60]
 ```
@@ -35,7 +35,7 @@ const result = V.match(test); // result [ 'Chrome', 60]
 ```javascript
 const { Version } = require('fallback-version');
 const V = new Version();
-V.loadVersionMap(new Set(['Chrome/10', 'Chrome/50', 'Chrome/60', 'Chrome/65']));
+V.loadVersionSet(new Set(['Chrome/10', 'Chrome/50', 'Chrome/60', 'Chrome/65']));
 const test = 'Safari/62';
 const result = V.match(test); // result [ 'Unknown', 60]
 ```
@@ -45,7 +45,7 @@ const result = V.match(test); // result [ 'Unknown', 60]
 ```javascript
 const { Version } = require('fallback-version');
 const V = new Version();
-V.loadVersionMap(
+V.loadVersionSet(
   new Set([
     "Jimmy's favorite browser is Chrome and version 40 is the best.",
     "Tom's favorite browser is Chrome and version 55 is the best.",

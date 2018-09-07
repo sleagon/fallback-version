@@ -22,21 +22,21 @@ describe('Version', function() {
   });
   it('default params match should work.', function() {
     const V = new Version();
-    V.loadVersionMap(new Set(['Chrome/10', 'Chrome/50', 'Chrome/60', 'Chrome/65']));
+    V.loadVersionSet(new Set(['Chrome/10', 'Chrome/50', 'Chrome/60', 'Chrome/65']));
     const test = 'Chrome/53';
     const result = V.match(test);
     should(result).deepEqual(['Chrome', 50]);
   });
   it('default params unknown match should work.', function() {
     const V = new Version();
-    V.loadVersionMap(new Set(['Chrome/10', 'Chrome/50', 'Chrome/60', 'Chrome/65']));
+    V.loadVersionSet(new Set(['Chrome/10', 'Chrome/50', 'Chrome/60', 'Chrome/65']));
     const test = 'Chrome/8';
     const result = V.match(test);
     should(result).deepEqual(['Unknown', 0]);
   });
   it('complicated params match should work.', function() {
     const V = new Version();
-    V.loadVersionMap(
+    V.loadVersionSet(
       new Set([
         "Jimmy's favorite browser is Chrome and version 40 is the best.",
         "Tom's favorite browser is Chrome and version 55 is the best.",

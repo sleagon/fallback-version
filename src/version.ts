@@ -14,9 +14,9 @@ export class Version {
     if (!template || !versionSet) {
       return;
     }
-    this.loadVersionMap(versionSet, template);
+    this.loadVersionSet(versionSet, template);
   }
-  loadVersionMap = (versionSet: Set<string>, template: RegExp = this._template) => {
+  loadVersionSet = (versionSet: Set<string>, template: RegExp = this._template) => {
     const versionMap: Map<string, number[]> = new Map();
     for (let v of Array.from(versionSet)) {
       const [, family, version] = template.exec(v);
