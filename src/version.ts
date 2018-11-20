@@ -39,7 +39,12 @@ export class Version {
     return [this._defaultVersion || 'Unknown', 0];
   }
   match(str: string): (string | number)[] {
-    const [, family, version] = this._template.exec(str);
+    const result = this._template.exec(str);
+    // nothing matched
+    if (!result) {
+      return this.defaultVersion;
+    }
+    const [, family, version] = result;
     const vInt = +version;
     if (!family || !vInt) {
       return this.defaultVersion;
