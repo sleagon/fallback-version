@@ -52,7 +52,9 @@ export class Version {
     const versions = this.versions(family);
     let matched = 0;
     for (let v of versions) {
-      if (vInt > v) {
+      // fix issue caused by mismatch
+      // chrome/70 should get chrome/70 instead of chrome/69
+      if (vInt >= v) {
         matched = v;
       }
     }

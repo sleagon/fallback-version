@@ -49,4 +49,19 @@ describe('Version', function() {
     const result = V.match(test);
     should(result).deepEqual(['Chrome', 55]);
   });
+  it('chrome/70 should match to chrome/70 instead of chrome/69', function() {
+    const V = new Version();
+    V.loadVersionSet(
+      new Set([
+        "Jimmy's favorite browser is Chrome and version 40 is the best.",
+        "Tom's favorite browser is Chrome and version 55 is the best.",
+        "John's favorite browser is Safari and version 11 is the best.",
+        "Cate's favorite browser is Edge and version 15 is the best.",
+      ]),
+      /\w+\'s favorite browser is (\w+) and version (\d+) is the best./
+    );
+    const test = "Shanyy's favorite browser is Chrome and version 55 is the best.";
+    const result = V.match(test);
+    should(result).deepEqual(['Chrome', 55]);
+  });
 });
